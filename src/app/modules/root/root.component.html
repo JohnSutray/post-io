@@ -1,0 +1,11 @@
+<div class="flex-column">
+  <app-control-panel></app-control-panel>
+  <div class="flex-row">
+    <div class="flex-grow-1" style="height: 100px; background-color: red">
+      <router-outlet></router-outlet>
+    </div>
+    <div class="flex-grow-2" style="height: 100px; background-color: blue">
+      <router-outlet name="feature-content"></router-outlet>
+    </div>
+  </div>
+</div>

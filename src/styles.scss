@@ -1,1 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+html, body {
+  margin: 0;
+  *:focus {
+    outline: 0;
+  }
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@for $i from 1 to 10 {
+  .flex-grow-#{$i} {
+    flex-grow: $i;
+  }
+}
+.flex-center {
+  justify-content: center;
+}

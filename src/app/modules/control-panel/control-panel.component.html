@@ -1,0 +1,16 @@
+<mat-tab-group mat-align-tabs="center">
+  <mat-tab *ngFor="let tab of tabs">
+    <ng-template mat-tab-label>
+      <div [routerLink]="tab.routerLink"
+           class="control-panel__tab">
+        <mat-icon>
+          {{ tab.iconName }}
+        </mat-icon>
+        <div>
+          {{ tab.label }}
+        </div>
+      </div>
+    </ng-template>
+    <div class="control-panel__tab-placeholder"></div>
+  </mat-tab>
+</mat-tab-group>
