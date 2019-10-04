@@ -9,8 +9,8 @@ export enum EUserActions {
 }
 
 export class UserActions {
-  static GetUsersByGuid = createAction(EUserActions.GetUsersByGuid);
-  static GetUsersByGuidSuccess = createAction(EUserActions.GetUsersByGuidSuccess, props<IUser[]>());
-  static GetCurrentUser = createAction(EUserActions.GetCurrentUser);
-  static GetCurrentUserSuccess = createAction(EUserActions.GetCurrentUserSuccess, props<IUser>());
+  static readonly GetUsersByGuid = createAction(EUserActions.GetUsersByGuid);
+  static readonly GetUsersByGuidSuccess = createAction(EUserActions.GetUsersByGuidSuccess, props<IUser[]>());
+  static readonly GetCurrentUser = createAction(EUserActions.GetCurrentUser);
+  static readonly GetCurrentUserSuccess = createAction(EUserActions.GetCurrentUserSuccess, props<IUser>());
 }

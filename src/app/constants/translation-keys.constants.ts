@@ -1,0 +1,12 @@
+export const TranslationKeysConstants = {
+  SIGN_UP: 'SIGN_UP',
+  SIGN_IN: 'SIGN_IN',
+  LOGIN: 'LOGIN',
+  PASSWORD: 'PASSWORD',
+  FIRST_NAME: 'FIRST_NAME',
+  LAST_NAME: 'LAST_NAME',
+  USERS: 'USERS',
+  MY_PAGE: 'MY_PAGE',
+  DIALOGS: 'DIALOGS',
+  POSTS: 'POSTS',
+};

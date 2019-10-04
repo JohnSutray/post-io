@@ -12,6 +12,10 @@ import { UserReducer } from '../../store/reducers/user.reducer';
 import { APOLLO_OPTIONS, ApolloModule } from 'apollo-angular';
 import { HttpLink, HttpLinkModule } from 'apollo-angular-link-http';
 import { ApolloClientUtils } from '../../../utils/apollo-client.utils';
+import { TranslationModule } from '../translation/translation.module';
+import { EffectsModule } from '@ngrx/effects';
+import { RootEffects } from './root.effects';
+import { LocalStorageService } from '../../services/local-storage.service';
 
 @NgModule({
   declarations: [
@@ -30,6 +34,8 @@ import { ApolloClientUtils } from '../../../utils/apollo-client.utils';
     UserPageModule,
     ControlPanelModule,
     ApolloModule,
+    TranslationModule,
+    EffectsModule.forRoot([RootEffects]),
   ],
   providers: [
     {
@@ -37,6 +43,7 @@ import { ApolloClientUtils } from '../../../utils/apollo-client.utils';
       useFactory: ApolloClientUtils.apolloOptionsFactory,
       deps: [HttpLink],
     },
+    LocalStorageService,
   ],
   bootstrap: [
     RootComponent,
