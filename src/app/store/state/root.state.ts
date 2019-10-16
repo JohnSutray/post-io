@@ -1,14 +1,18 @@
-import { IUserState, UserState } from './user.state';
 import { EAppTabs } from '../../enums/app-tabs.enum';
+import { User } from '../../generated/graph-ql-types';
 
 export interface IRootState {
-  userState: IUserState;
   currentTab: EAppTabs;
+  canChangeTabs: boolean;
+  user: User;
 }
 
-export function getInitialRootState(): IRootState {
-  return {
-    userState: UserState.getInitialUserState(),
-    currentTab: EAppTabs.USERS,
-  };
+export class RootState {
+  static getInitialRootState(): IRootState {
+    return {
+      currentTab: EAppTabs.USERS,
+      canChangeTabs: true,
+      user: null,
+    };
+  }
 }

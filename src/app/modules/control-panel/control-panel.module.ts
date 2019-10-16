@@ -5,6 +5,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 import { TranslationModule } from '../translation/translation.module';
+import { MatButtonModule } from '@angular/material';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { TranslationModule } from '../translation/translation.module';
     MatIconModule,
     RouterModule,
     TranslationModule,
+    MatButtonModule,
   ],
   exports: [
     ControlPanelComponent,

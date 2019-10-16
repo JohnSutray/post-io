@@ -9,7 +9,7 @@ export class DialogService {
   ) {
   }
 
-  public open<AfterClosedOutput>(component: any, data: any): Observable<AfterClosedOutput> {
+  public open<AfterClosedOutput>(component: any, data?: any): Observable<AfterClosedOutput> {
     return this.dialog.open(component, data).afterClosed();
   }
 }

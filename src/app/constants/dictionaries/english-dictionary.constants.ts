@@ -3,6 +3,7 @@ import { TranslationKeysConstants } from '../translation-keys.constants';
 export const EnglishDictionaryConstants = {
   [TranslationKeysConstants.SIGN_UP]: 'Sign Up',
   [TranslationKeysConstants.SIGN_IN]: 'Sign In',
+  [TranslationKeysConstants.SIGN_OUT]: 'Sign Out',
   [TranslationKeysConstants.LOGIN]: 'Login',
   [TranslationKeysConstants.PASSWORD]: 'Password',
   [TranslationKeysConstants.FIRST_NAME]: 'First name',
@@ -11,4 +12,5 @@ export const EnglishDictionaryConstants = {
   [TranslationKeysConstants.MY_PAGE]: 'My page',
   [TranslationKeysConstants.DIALOGS]: 'Dialogs',
   [TranslationKeysConstants.POSTS]: 'Posts',
+  [TranslationKeysConstants.CANCEL]: 'Cancel',
 };

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Apollo } from 'apollo-angular';
-import { select, Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { IRootState } from '../../store/state/root.state';
-import { RootActions } from '../../store/actions/root.actions';
+import { ERootActions, RootActions } from '../../store/actions/root.actions';
+import { SignInQuery } from '../../queries/authorizr.queries';
 
 @Component({
   selector: 'app-root',
@@ -11,12 +11,12 @@ import { RootActions } from '../../store/actions/root.actions';
 })
 export class RootComponent implements OnInit {
   constructor(
-    private apollo: Apollo,
-    private store: Store<IRootState>
+    private store: Store<IRootState>,
   ) {
   }
 
   ngOnInit(): void {
-    this.store.dispatch(RootActions.RestoreLanguage());
+    this.store.dispatch(RootActions[ERootActions.RestoreLanguage]());
+    this.store.dispatch(RootActions[ERootActions.RestoreUser]());
   }
 }

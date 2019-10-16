@@ -16,4 +16,34 @@
     </mat-tab>
   </mat-tab-group>
 
+  <div class="flex-grow"></div>
+
+  <div class="flex-column flex-center">
+    <div class="flex-row flex-no-shrink">
+      <button type="button"
+              mat-raised-button
+              color="primary"
+              class="control-panel__sign-button"
+              *ngIf="!(user$ | async)"
+              (click)="openSignIn()">
+        {{ TranslationKeysConstants.SIGN_IN | t }}
+      </button>
+      <button type="button"
+              mat-raised-button
+              color="primary"
+              class="control-panel__sign-button"
+              *ngIf="!(user$ | async)"
+              (click)="openSignUp()">
+        {{ TranslationKeysConstants.SIGN_UP | t }}
+      </button>
+      <button type="button"
+              mat-raised-button
+              color="primary"
+              class="control-panel__sign-button"
+              *ngIf="user$ | async"
+              (click)="signOut()">
+        {{ TranslationKeysConstants.SIGN_OUT | t }}
+      </button>
+    </div>
+  </div>
 </div>

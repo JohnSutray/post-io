@@ -1,0 +1,50 @@
+<h1 mat-dialog-title>
+  {{ TranslationsKeys.SIGN_UP | t }}
+</h1>
+
+<div mat-dialog-content>
+  <div class="flex-column">
+    <mat-form-field>
+      <input [formControl]="firstNameControl"
+             matInput
+             [placeholder]="TranslationsKeys.FIRST_NAME | t">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input [formControl]="lastNameControl"
+             matInput
+             [placeholder]="TranslationsKeys.LAST_NAME | t">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input [formControl]="loginControl"
+             matInput
+             [placeholder]="TranslationsKeys.LOGIN | t">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input [formControl]="passwordControl"
+             matInput
+             [placeholder]="TranslationsKeys.PASSWORD | t">
+    </mat-form-field>
+  </div>
+</div>
+
+<div mat-dialog-actions>
+  <div class="flex-row">
+    <button type="button"
+            mat-raised-button
+            color="primary"
+            (click)="signUp()"
+            [disabled]="signUpFormGroup.invalid">
+      {{ TranslationsKeys.SIGN_UP | t }}
+    </button>
+
+    <button type="button"
+            mat-raised-button
+            color="accent"
+            (click)="close()">
+      {{ TranslationsKeys.CANCEL | t }}
+    </button>
+  </div>
+</div>

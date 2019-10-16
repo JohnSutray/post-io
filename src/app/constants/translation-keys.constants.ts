@@ -1,5 +1,6 @@
 export const TranslationKeysConstants = {
   SIGN_UP: 'SIGN_UP',
+  SIGN_OUT: 'SIGN_OUT',
   SIGN_IN: 'SIGN_IN',
   LOGIN: 'LOGIN',
   PASSWORD: 'PASSWORD',
@@ -9,4 +10,5 @@ export const TranslationKeysConstants = {
   MY_PAGE: 'MY_PAGE',
   DIALOGS: 'DIALOGS',
   POSTS: 'POSTS',
+  CANCEL: 'CANCEL'
 };

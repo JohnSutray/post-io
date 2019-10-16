@@ -1,9 +1,15 @@
-.control-panel__tab {
-  width: 100%;
-  height: 100%;
-  flex-grow: 1;
-}
+.control-panel {
+  &__tab {
+    width: 100%;
+    height: 100%;
+    flex-grow: 1;
+  }
 
-.control-panel__tab-placeholder {
-  height: 1px;
+  &__tab-placeholder {
+    height: 1px;
+  }
+
+  &__sign-button {
+    margin: 5px;
+  }
 }

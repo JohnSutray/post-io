@@ -1,5 +1,9 @@
 import { createAction } from '@ngrx/store';
 
+export enum ECommonActions {
+  EmptyAction = '[App] Empty Action'
+}
+
 export class CommonActions {
-  static readonly EmptyAction = createAction('[App] Empty');
+  static readonly [ECommonActions.EmptyAction] = createAction(ECommonActions.EmptyAction);
 }

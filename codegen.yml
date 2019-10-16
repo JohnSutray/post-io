@@ -1,0 +1,7 @@
+schema: http://localhost:3000/graphql
+generates:
+  ./src/app/generated/graph-ql-types.d.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-apollo-angular
