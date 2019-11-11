@@ -3,7 +3,7 @@ import { IRootState, RootState } from './root.state';
 import { Payload } from '../../models/payload.model';
 import { User } from '../../models/user.model';
 import { ELanguages } from '../../enums/languages.enum';
-import { Action } from '@ngrx/store';
+import { Action, createReducer, on } from '@ngrx/store';
 import { StoreUtils } from '../../utils/store.utils';
 import { EAppFeature } from '../../enums/navigation.enum';
 
@@ -23,6 +23,7 @@ export class RootReducerMappers {
   }
 
   static [ERootActions.SetCurrentFeature](state: IRootState, payload: Payload<EAppFeature>): IRootState {
+    console.log('set current feature in reducer');
     return {
       ...state,
       currentFeature: payload.value,
@@ -30,6 +31,7 @@ export class RootReducerMappers {
   }
 
   static [ERootActions.SetIsLoading](state: IRootState, payload: Payload<boolean>): IRootState {
+    console.log('adsdadsaa')
     return {
       ...state,
       isLoading: payload.value,
@@ -37,10 +39,9 @@ export class RootReducerMappers {
   }
 }
 
-const rootReducer = StoreUtils.createReducer(
+const rootReducer = createReducer(
   RootState.getInitialRootState(),
-  RootReducerMappers,
-  RootActions,
+  on(RootActions[ERootActions.SetCurrentUser], RootReducerMappers[ERootActions.SetCurrentUser]),
 );
 
 export function RootReducer(state: IRootState, action: Action) {

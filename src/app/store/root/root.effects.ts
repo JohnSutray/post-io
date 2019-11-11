@@ -15,7 +15,8 @@ import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { IAppStore } from '../app.store';
 import { selectRoot } from './root.selector';
-import { combineLatest } from 'rxjs';
+import { combineLatest, of } from 'rxjs';
+import { EAppFeature } from '../../enums/navigation.enum';
 
 @Injectable()
 export class RootEffects {
@@ -69,8 +70,13 @@ export class RootEffects {
     ),
   ));
 
-  [ERootActions.SetCurrentFeature] = createEffect(() => this.actions$.pipe(
-    ofType(RootActions[ERootActions.SetCurrentFeature]),
-
-  );
+  [ERootActions.ChangeAppFeature] = createEffect(() => this.actions$.pipe(
+    ofType(RootActions[ERootActions.ChangeAppFeature]),
+    switchMap(newFeature => combineLatest(of(newFeature.value), this.isLoading)),
+    tap(console.log),
+    map(([newFeature, isLoading]) => isLoading
+      ? EmptyAction()
+      : RootActions[ERootActions.SetCurrentFeature](new Payload(newFeature)),
+    ),
+  ));
 }

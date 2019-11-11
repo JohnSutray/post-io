@@ -4,7 +4,9 @@ import { ELanguages } from '../enums/languages.enum';
 import { ELocalStorage } from '../enums/local-storage.enum';
 import { TranslateService } from '@ngx-translate/core';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class LanguageService {
   constructor(
     private readonly localStorageService: LocalStorageService,

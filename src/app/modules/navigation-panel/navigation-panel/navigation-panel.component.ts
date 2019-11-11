@@ -23,11 +23,13 @@ export class NavigationPanelComponent {
     select(state => state.currentFeature),
   );
 
+
   elements = NavigationPanelElementsConstants.ELEMENTS;
 
   navigateTo(path: EAppFeature) {
-    this.store.dispatch(RootActions[ERootActions.SetCurrentFeature](
-      new Payload<EAppFeature>(path)),
-    );
+    console.log(`click navigate ${path}`)
+    this.store.dispatch(RootActions[ERootActions.ChangeAppFeature](
+      new Payload<EAppFeature>(path),
+    ));
   }
 }

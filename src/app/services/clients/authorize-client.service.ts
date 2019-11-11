@@ -6,7 +6,9 @@ import { environment } from '../../../environments/environment';
 import { OperationResult } from '../../models/operation-result.model';
 import { User } from '../../models/user.model';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class AuthorizeClientService {
   constructor(
     private readonly httpClient: HttpClient,

@@ -5,7 +5,9 @@ import { Observable } from 'rxjs';
 import { OperationResult } from '../../models/operation-result.model';
 import { environment } from '../../../environments/environment';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class UserClientService {
   constructor(
     private readonly httpClient: HttpClient,

@@ -11,18 +11,20 @@ export enum ERootActions {
   SetCurrentFeature = '[Root] Set current feature',
   SetCurrentUser = '[Root] Set Current User',
   SetLanguage = '[Root] Set Language',
+  SetErrors = '[Root] Set Errors',
+  SetIsLoading = '[Root] Set is loading',
   RestoreLanguage = '[Root] Restore Language',
   RestoreCurrentUser = '[Root] Restore User',
   SignIn = '[Root] Sign In',
   SignUp = '[Root] Sign Up',
   OpenSignInModal = '[Root] Open Sign In Modal',
   OpenSignUpModal = '[Root] Open Sign Up Modal',
-  SetErrors = '[Root] Set Errors',
-  SetIsLoading = '[Root] Set is loading',
+  ChangeAppFeature = '[Root] Change App Feature'
 }
 
 export class RootActions {
   static readonly [ERootActions.SetCurrentFeature] = createAction(ERootActions.SetCurrentFeature, props<Payload<EAppFeature>>());
+  static readonly [ERootActions.ChangeAppFeature] = createAction(ERootActions.ChangeAppFeature, props<Payload<EAppFeature>>());
   static readonly [ERootActions.SetCurrentUser] = createAction(ERootActions.SetCurrentUser, props<Payload<User>>());
   static readonly [ERootActions.SetLanguage] = createAction(ERootActions.SetLanguage, props<Payload<ELanguages>>());
   static readonly [ERootActions.RestoreLanguage] = createAction(ERootActions.RestoreLanguage);
