@@ -1,25 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NavigationPanelComponent } from './navigation-panel.component';
+import { timer } from 'rxjs';
 
 describe('NavigationPanelComponent', () => {
-  let component: NavigationPanelComponent;
-  let fixture: ComponentFixture<NavigationPanelComponent>;
+  it('should call all deps', () => {
+    const t1 = timer(1000, 4000);
+    const t2 = timer(1000, 2000);
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ NavigationPanelComponent ]
-    })
-    .compileComponents();
-  }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(NavigationPanelComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+  })
 });

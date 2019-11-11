@@ -5,8 +5,10 @@ import { SignIn } from '../../models/sign-in.model';
 import { CreateUser } from '../../models/create-user.model';
 import { ErrorData } from '../../models/error-modal-data.model';
 import { createAction, props } from '@ngrx/store';
+import { EAppFeature } from '../../enums/navigation.enum';
 
 export enum ERootActions {
+  SetCurrentFeature = '[Root] Set current feature',
   SetCurrentUser = '[Root] Set Current User',
   SetLanguage = '[Root] Set Language',
   RestoreLanguage = '[Root] Restore Language',
@@ -16,9 +18,11 @@ export enum ERootActions {
   OpenSignInModal = '[Root] Open Sign In Modal',
   OpenSignUpModal = '[Root] Open Sign Up Modal',
   SetErrors = '[Root] Set Errors',
+  SetIsLoading = '[Root] Set is loading',
 }
 
 export class RootActions {
+  static readonly [ERootActions.SetCurrentFeature] = createAction(ERootActions.SetCurrentFeature, props<Payload<EAppFeature>>());
   static readonly [ERootActions.SetCurrentUser] = createAction(ERootActions.SetCurrentUser, props<Payload<User>>());
   static readonly [ERootActions.SetLanguage] = createAction(ERootActions.SetLanguage, props<Payload<ELanguages>>());
   static readonly [ERootActions.RestoreLanguage] = createAction(ERootActions.RestoreLanguage);
@@ -28,4 +32,5 @@ export class RootActions {
   static readonly [ERootActions.OpenSignInModal] = createAction(ERootActions.OpenSignInModal);
   static readonly [ERootActions.OpenSignUpModal] = createAction(ERootActions.OpenSignUpModal);
   static readonly [ERootActions.SetErrors] = createAction(ERootActions.SetErrors, props<Payload<ErrorData>>());
+  static readonly [ERootActions.SetIsLoading] = createAction(ERootActions.SetIsLoading, props<Payload<boolean>>());
 }

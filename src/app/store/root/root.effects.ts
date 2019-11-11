@@ -11,6 +11,11 @@ import { AuthorizeService } from '../../services/authorize.service';
 import { Payload } from '../../models/payload.model';
 import { ErrorData } from '../../models/error-modal-data.model';
 import { LanguageService } from '../../services/language.service';
+import { Router } from '@angular/router';
+import { select, Store } from '@ngrx/store';
+import { IAppStore } from '../app.store';
+import { selectRoot } from './root.selector';
+import { combineLatest } from 'rxjs';
 
 @Injectable()
 export class RootEffects {
@@ -20,8 +25,15 @@ export class RootEffects {
     private readonly bottomSheetService: BottomSheetService,
     private readonly authService: AuthorizeService,
     private readonly languageService: LanguageService,
+    private readonly router: Router,
+    private readonly store: Store<IAppStore>,
   ) {
   }
+
+  readonly rootState = this.store.select(selectRoot);
+  readonly isLoading = this.rootState.pipe(
+    select(s => s.isLoading),
+  );
 
   [ERootActions.RestoreLanguage] = createEffect(() => this.actions$.pipe(
     ofType(RootActions[ERootActions.RestoreLanguage]),
@@ -56,4 +68,9 @@ export class RootEffects {
       : RootActions[ERootActions.SetErrors](new Payload(new ErrorData('Cannot sign in', result.errors))),
     ),
   ));
+
+  [ERootActions.SetCurrentFeature] = createEffect(() => this.actions$.pipe(
+    ofType(RootActions[ERootActions.SetCurrentFeature]),
+
+  );
 }
