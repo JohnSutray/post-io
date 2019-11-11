@@ -1,25 +1,25 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NavigationPanelComponent } from './navigation-panel.component';
+import { combineLatest, forkJoin, Subject, timer } from 'rxjs';
+import { first } from 'rxjs/operators';
 
 describe('NavigationPanelComponent', () => {
-  let component: NavigationPanelComponent;
-  let fixture: ComponentFixture<NavigationPanelComponent>;
+  it('should call all deps', done => {
+    const t1 = new Subject();
+    const t2 = new Subject();
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ NavigationPanelComponent ]
-    })
-    .compileComponents();
-  }));
+    combineLatest(t1, t2).pipe(first()).subscribe(data => {
+      console.log(data);
+      done();
+      if (data[0] === 1) {
+      }
+    });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(NavigationPanelComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    t1.next(0);
+    t2.next(0);
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+    t1.next(1);
+    t2.next(1);
   });
 });

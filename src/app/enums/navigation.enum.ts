@@ -1,4 +1,4 @@
-export enum ENavigation {
+export enum EAppFeature {
   USERS = 'users',
   MESSAGES = 'messages',
   POSTS = 'posts',

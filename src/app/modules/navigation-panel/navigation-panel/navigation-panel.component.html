@@ -1,9 +1,11 @@
 <div class="flex-row navigation-panel">
   <div class="flex-row flex-center flex-grow-1 navigation-panel__element"
+       [class.navigation-panel__element_active]="element.feature === (currentFeature | async)"
        *ngFor="let element of elements"
-       (click)="navigateTo(element.path)">
-    <div class="flex-column flex-center"
-         matRipple>
+       matRipple
+       matRippleColor="rgba(205, 201, 201, 0.5"
+       (click)="navigateTo(element.feature)">
+    <div class="flex-column flex-center">
       <div>
         {{ element.name }}
       </div>

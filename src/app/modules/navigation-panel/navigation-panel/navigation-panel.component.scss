@@ -3,13 +3,17 @@
   height: 10%;
 
   &__element {
-    background-color: bisque;
+    background-color: #e2e2e2;
     font-size: 30px;
     text-transform: uppercase;
 
     &:hover {
-      background-color: #ae9682;
+      background-color: #dbdbdb;
       cursor: pointer;
+    }
+
+    &_active {
+      background-color: rgba(205, 201, 201);
     }
   }
 }

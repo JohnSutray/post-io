@@ -9,7 +9,9 @@ import { CreateUser } from '../models/create-user.model';
 import { UserClientService } from './clients/user-client.service';
 import { User } from '../models/user.model';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class AuthorizeService {
   constructor(
     private readonly authorizeClient: AuthorizeClientService,

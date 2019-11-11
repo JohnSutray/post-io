@@ -5,6 +5,7 @@ import { User } from '../../models/user.model';
 import { ELanguages } from '../../enums/languages.enum';
 import { Action } from '@ngrx/store';
 import { StoreUtils } from '../../utils/store.utils';
+import { EAppFeature } from '../../enums/navigation.enum';
 
 export class RootReducerMappers {
   static [ERootActions.SetLanguage](state: IRootState, payload: Payload<ELanguages>): IRootState {
@@ -18,6 +19,21 @@ export class RootReducerMappers {
     return {
       ...state,
       currentUser: payload.value,
+    };
+  }
+
+  static [ERootActions.SetCurrentFeature](state: IRootState, payload: Payload<EAppFeature>): IRootState {
+    console.log('set current feature in reducer');
+    return {
+      ...state,
+      currentFeature: payload.value,
+    };
+  }
+
+  static [ERootActions.SetIsLoading](state: IRootState, payload: Payload<boolean>): IRootState {
+    return {
+      ...state,
+      isLoading: payload.value,
     };
   }
 }
