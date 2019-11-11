@@ -1,0 +1,28 @@
+<div mat-dialog-title>
+  Sign In
+</div>
+
+<div mat-dialog-content>
+  <form [formGroup]="signInform">
+    <mat-form-field>
+      <input label="Login"
+             matInput
+             [formControl]="login">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input label="Password"
+             matInput
+             [formControl]="password">
+    </mat-form-field>
+  </form>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-raised-button
+          type="button"
+          (click)="submit()">
+    Sign In
+  </button>
+  <button mat-raised-button>Cancel</button>
+</div>
