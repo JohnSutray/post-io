@@ -19,7 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,7 +27,9 @@ import { HttpClientModule } from '@angular/common/http';
     StoreModule.forRoot({
       [RootStateToken]: RootReducer,
     }),
-    EffectsModule.forRoot([RootEffects]),
+    EffectsModule.forRoot([
+      RootEffects,
+    ]),
     BrowserAnimationsModule,
     TranslateModule.forRoot(),
     NavigationPanelModule,
@@ -35,8 +37,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatBottomSheetModule,
     HttpClientModule,
   ],
-  providers: [
-  ],
-  bootstrap: [AppComponent]
+  providers: [],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {
+}

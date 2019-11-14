@@ -27,7 +27,6 @@ export class NavigationPanelComponent {
   elements = NavigationPanelElementsConstants.ELEMENTS;
 
   navigateTo(path: EAppFeature) {
-    console.log(`click navigate ${path}`)
     this.store.dispatch(RootActions[ERootActions.ChangeAppFeature](
       new Payload<EAppFeature>(path),
     ));

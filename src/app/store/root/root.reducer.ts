@@ -23,7 +23,6 @@ export class RootReducerMappers {
   }
 
   static [ERootActions.SetCurrentFeature](state: IRootState, payload: Payload<EAppFeature>): IRootState {
-    console.log('set current feature in reducer');
     return {
       ...state,
       currentFeature: payload.value,
@@ -31,7 +30,6 @@ export class RootReducerMappers {
   }
 
   static [ERootActions.SetIsLoading](state: IRootState, payload: Payload<boolean>): IRootState {
-    console.log('adsdadsaa')
     return {
       ...state,
       isLoading: payload.value,
@@ -41,6 +39,7 @@ export class RootReducerMappers {
 
 const rootReducer = createReducer(
   RootState.getInitialRootState(),
+  on(RootActions[ERootActions.SetCurrentFeature], RootReducerMappers[ERootActions.SetCurrentFeature]),
   on(RootActions[ERootActions.SetCurrentUser], RootReducerMappers[ERootActions.SetCurrentUser]),
 );
 

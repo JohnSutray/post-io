@@ -73,7 +73,7 @@ export class RootEffects {
   [ERootActions.ChangeAppFeature] = createEffect(() => this.actions$.pipe(
     ofType(RootActions[ERootActions.ChangeAppFeature]),
     switchMap(newFeature => combineLatest(of(newFeature.value), this.isLoading)),
-    tap(console.log),
+    tap(([newFeature, isLoading]) => !isLoading && this.router.navigate([newFeature])),
     map(([newFeature, isLoading]) => isLoading
       ? EmptyAction()
       : RootActions[ERootActions.SetCurrentFeature](new Payload(newFeature)),
