@@ -2,19 +2,10 @@ import { ERootActions, RootActions } from './root.actions';
 import { IRootState, RootState } from './root.state';
 import { Payload } from '../../models/payload.model';
 import { User } from '../../models/user.model';
-import { ELanguages } from '../../enums/languages.enum';
 import { Action, createReducer, on } from '@ngrx/store';
-import { StoreUtils } from '../../utils/store.utils';
 import { EAppFeature } from '../../enums/navigation.enum';
 
 export class RootReducerMappers {
-  static [ERootActions.SetLanguage](state: IRootState, payload: Payload<ELanguages>): IRootState {
-    return {
-      ...state,
-      language: payload.value,
-    };
-  }
-
   static [ERootActions.SetCurrentUser](state: IRootState, payload: Payload<User>): IRootState {
     return {
       ...state,

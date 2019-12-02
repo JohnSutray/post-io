@@ -1,11 +1,11 @@
 import { NavigationPanelElement } from '../models/navigation-panel-element.model';
-import { ETranslation } from '../enums/translation.enum';
+import { TranslationConstants } from './translation.constants';
 import { EAppFeature } from '../enums/navigation.enum';
 
 export const NavigationPanelElementsConstants = {
   ELEMENTS: [
-    new NavigationPanelElement(ETranslation.USERS, EAppFeature.USERS),
-    new NavigationPanelElement(ETranslation.MESSAGES, EAppFeature.MESSAGES),
-    new NavigationPanelElement(ETranslation.POSTS, EAppFeature.POSTS),
+    new NavigationPanelElement(TranslationConstants.USERS, EAppFeature.USERS),
+    new NavigationPanelElement(TranslationConstants.MESSAGES, EAppFeature.MESSAGES),
+    new NavigationPanelElement(TranslationConstants.POSTS, EAppFeature.POSTS),
   ] as NavigationPanelElement[],
 } as const;

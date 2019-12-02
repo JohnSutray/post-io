@@ -1,6 +1,5 @@
 import { Payload } from '../../models/payload.model';
 import { User } from '../../models/user.model';
-import { ELanguages } from '../../enums/languages.enum';
 import { SignIn } from '../../models/sign-in.model';
 import { CreateUser } from '../../models/create-user.model';
 import { ErrorData } from '../../models/error-modal-data.model';
@@ -26,7 +25,6 @@ export class RootActions {
   static readonly [ERootActions.SetCurrentFeature] = createAction(ERootActions.SetCurrentFeature, props<Payload<EAppFeature>>());
   static readonly [ERootActions.ChangeAppFeature] = createAction(ERootActions.ChangeAppFeature, props<Payload<EAppFeature>>());
   static readonly [ERootActions.SetCurrentUser] = createAction(ERootActions.SetCurrentUser, props<Payload<User>>());
-  static readonly [ERootActions.SetLanguage] = createAction(ERootActions.SetLanguage, props<Payload<ELanguages>>());
   static readonly [ERootActions.RestoreLanguage] = createAction(ERootActions.RestoreLanguage);
   static readonly [ERootActions.RestoreCurrentUser] = createAction(ERootActions.RestoreCurrentUser);
   static readonly [ERootActions.SignIn] = createAction(ERootActions.SignIn, props<Payload<SignIn>>());

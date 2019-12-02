@@ -10,7 +10,6 @@ import { SignUpComponent } from '../../modules/sign/sign-up/sign-up.component';
 import { AuthorizeService } from '../../services/authorize.service';
 import { Payload } from '../../models/payload.model';
 import { ErrorData } from '../../models/error-modal-data.model';
-import { LanguageService } from '../../services/language.service';
 import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { IAppStore } from '../app.store';
@@ -25,7 +24,6 @@ export class RootEffects {
     private readonly dialogService: DialogService,
     private readonly bottomSheetService: BottomSheetService,
     private readonly authService: AuthorizeService,
-    private readonly languageService: LanguageService,
     private readonly router: Router,
     private readonly store: Store<IAppStore>,
   ) {
@@ -35,13 +33,6 @@ export class RootEffects {
   readonly isLoading = this.rootState.pipe(
     select(s => s.isLoading),
   );
-
-  [ERootActions.RestoreLanguage] = createEffect(() => this.actions$.pipe(
-    ofType(RootActions[ERootActions.RestoreLanguage]),
-    tap(() => this.languageService.restoreLanguage()),
-    map(() => RootActions[ERootActions.SetLanguage]({ value: this.languageService.currentLanguage })),
-    map(() => EmptyAction()),
-  ));
 
   [ERootActions.RestoreCurrentUser] = createEffect(() => this.actions$.pipe(
     ofType(RootActions[ERootActions.RestoreCurrentUser]),
