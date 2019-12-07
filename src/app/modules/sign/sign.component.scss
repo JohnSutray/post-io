@@ -1,0 +1,30 @@
+.sign {
+
+  width: 100vw;
+  height: 100vh;
+
+  &__card {
+    width: 400px;
+  }
+
+  &__title {
+    font-size: 30px;
+  }
+
+  &__radio-group {
+    margin: 5px;
+  }
+
+  &__radio {
+    margin: 5px;
+    font-size: 20px;
+  }
+
+  &__button {
+    font-size: 30px;
+  }
+}
+
+::ng-deep div.mat-card-header-text {
+  margin: 0;
+}

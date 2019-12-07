@@ -1,10 +1,11 @@
 <div class="flex-row navigation-panel">
   <div class="flex-row flex-center flex-grow-1 navigation-panel__element"
-       [class.navigation-panel__element_active]="element.feature === (currentFeature | async)"
+       [class.navigation-panel__element_active]="element.feature === currentFeature"
+       [class.navigation-panel__element_disabled]="navigationDisabled"
        *ngFor="let element of elements"
        matRipple
        matRippleColor="rgba(205, 201, 201, 0.5"
-       (click)="navigateTo(element.feature)">
+       (click)="!navigationDisabled && navigateTo(element.feature)">
     <div class="flex-column flex-center">
       <div>
         {{ element.name }}

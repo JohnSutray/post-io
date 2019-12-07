@@ -8,6 +8,9 @@ import { ELocalStorage } from '../enums/local-storage.enum';
 import { CreateUser } from '../models/create-user.model';
 import { UserClientService } from './clients/user-client.service';
 import { User } from '../models/user.model';
+import { Router } from '@angular/router';
+import { EAppState } from '../enums/navigation.enum';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -17,22 +20,42 @@ export class AuthorizeService {
     private readonly authorizeClient: AuthorizeClientService,
     private readonly userClient: UserClientService,
     private readonly localStorageService: LocalStorageService,
+    private readonly router: Router,
   ) {
   }
 
-  signIn(signIn: SignIn): Observable<OperationResult> {
-    return this.authorizeClient.signIn(signIn);
+  private currentUser: User;
+
+  get token(): string {
+    return this.localStorageService.get<string>(ELocalStorage.TOKEN);
+  }
+
+  get isSigned(): boolean {
+    return !!this.currentUser;
+  }
+
+  restoreUser(): void {
+    this.authorizeClient.iAm().subscribe(this.checkSignResult);
+  }
+
+  signIn(signIn: SignIn): void {
+    this.authorizeClient.signIn(signIn).pipe(tap(console.log)).subscribe(this.checkSignResult);
   }
 
   signOut(): void {
+    this.router.navigate([EAppState.SIGN]);
     this.localStorageService.remove(ELocalStorage.TOKEN);
   }
 
-  signUp(signUp: CreateUser): Observable<OperationResult> {
-    return this.userClient.createUser(signUp);
+  signUp(signUp: CreateUser): void {
+    this.userClient.createUser(signUp).subscribe(this.checkSignResult);
   }
 
-  iAm(): Observable<User> {
-    return this.authorizeClient.iAm();
-  }
+  private checkSignResult = (user: User) => {
+    if (user) {
+      console.log(user);
+      this.currentUser = user;
+      this.router.navigate([EAppState.USERS]);
+    }
+  };
 }

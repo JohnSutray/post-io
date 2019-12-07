@@ -7,15 +7,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateModule } from '@ngx-translate/core';
 import { NavigationPanelModule } from '../navigation-panel/navigation-panel.module';
 import { StoreModule } from '@ngrx/store';
-import { RootReducer } from '../../store/root/root.reducer';
-import { RootStateToken } from '../../store/root/root.state';
-import { EffectsModule } from '@ngrx/effects';
-import { RootEffects } from '../../store/root/root.effects';
 import { MatDialogModule } from '@angular/material/dialog';
-import { BottomSheetService } from '../../services/botton-sheet.service';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
-import { AuthorizeService } from '../../services/authorize.service';
 import { HttpClientModule } from '@angular/common/http';
+import { InfoDialogModule } from '../../components/info-dialog/info-dialog.module';
 
 @NgModule({
   declarations: [
@@ -24,20 +19,14 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({
-      [RootStateToken]: RootReducer,
-    }),
-    EffectsModule.forRoot([
-      RootEffects,
-    ]),
     BrowserAnimationsModule,
     TranslateModule.forRoot(),
     NavigationPanelModule,
     MatDialogModule,
     MatBottomSheetModule,
     HttpClientModule,
+    InfoDialogModule,
   ],
-  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {

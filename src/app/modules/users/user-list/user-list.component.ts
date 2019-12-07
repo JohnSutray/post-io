@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { User } from '../../../models/user.model';
 
 @Component({
   selector: 'app-user-list',
@@ -7,7 +6,4 @@ import { User } from '../../../models/user.model';
   styleUrls: ['./user-list.component.scss'],
 })
 export class UserListComponent {
-  users = [
-    new User()
-  ];
 }

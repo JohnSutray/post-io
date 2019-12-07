@@ -15,6 +15,10 @@
     &_active {
       background-color: rgba(205, 201, 201);
     }
+
+    &_disabled {
+      color: rgb(173, 173, 173);
+    }
   }
 }
 

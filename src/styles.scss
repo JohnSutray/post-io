@@ -1,7 +1,6 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-//@import "node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css";
 
 .flex-row {
   display: flex;
@@ -15,6 +14,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .flex-center {
   justify-content: center;
+}
+
+.mat-form-field {
+  font-size: 25px;
 }
 
 @for $i from 1 through 3 {

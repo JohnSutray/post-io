@@ -1,0 +1,76 @@
+<div class="sign flex-row flex-center">
+  <div class="flex-column flex-center">
+    <mat-card class="sign__card mat-elevation-z8">
+      <mat-card-header class="sign__title flex-row flex-center">
+        <div>{{LabelConstants.SIGN}}</div>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div class="flex-column">
+          <mat-radio-group class="sign__radio-group flex-column"
+                           [(ngModel)]="_inSignInMode">
+            <mat-radio-button class="sign__radio"
+                              [value]="true">
+              {{LabelConstants.SIGN}} {{LabelConstants.IN}}
+            </mat-radio-button>
+            <mat-radio-button class="sign__radio"
+                              [value]="false">
+              {{LabelConstants.SIGN}} {{LabelConstants.UP}}
+            </mat-radio-button>
+          </mat-radio-group>
+
+          <mat-form-field>
+            <mat-label>{{LabelConstants.LOGIN}}</mat-label>
+            <input [formControl]="inSignInMode ? loginControl : newLoginControl"
+                   matInput
+                   autocomplete="off">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>{{LabelConstants.PASSWORD}}</mat-label>
+            <input [formControl]="inSignInMode ? passwordControl : newPasswordControl"
+                   matInput
+                   autocomplete="off">
+          </mat-form-field>
+
+          <mat-form-field *ngIf="inSignUpMode">
+            <mat-label>{{LabelConstants.FIRST_NAME}}</mat-label>
+            <input [formControl]="firstNameControl"
+                   matInput
+                   autocomplete="off">
+          </mat-form-field>
+
+          <mat-form-field *ngIf="inSignUpMode">
+            <mat-label>{{LabelConstants.LAST_NAME}}</mat-label>
+            <input [formControl]="lastNameControl"
+                   matInput
+                   autocomplete="off">
+          </mat-form-field>
+
+          <mat-form-field *ngIf="inSignUpMode">
+            <mat-label>{{LabelConstants.LAST_NAME}}</mat-label>
+            <input [formControl]="birthDateControl"
+                   matInput
+                   [matDatepicker]="picker"
+                   [readonly]="true"
+                   autocomplete="off">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <div class="flex-row flex-center">
+          <button mat-raised-button
+                  color="primary"
+                  class="flex-row sign__button"
+                  (click)="sign()"
+                  [disabled]="signDisabled">
+            {{LabelConstants.GO}}
+          </button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

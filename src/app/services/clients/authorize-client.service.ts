@@ -15,11 +15,11 @@ export class AuthorizeClientService {
   ) {
   }
 
-  signIn(signIn: SignIn): Observable<OperationResult> {
-    return this.httpClient.post<OperationResult>(`${environment.apiEndpoint}/auth`, signIn);
+  signIn(signIn: SignIn): Observable<User> {
+    return this.httpClient.post<User>(`${environment.apiEndpoint}/auth`, signIn);
   }
 
   iAm(): Observable<User> {
-    return this.httpClient.get<User>(`${environment.apiEndpoint}/i-am`);
+    return this.httpClient.get<User>(`${environment.apiEndpoint}/auth`);
   }
 }
