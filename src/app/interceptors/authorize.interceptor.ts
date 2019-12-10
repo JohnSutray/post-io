@@ -5,30 +5,29 @@ import { AuthorizeService } from '../services/authorize.service';
 import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { EAppState } from '../enums/navigation.enum';
+import { ELocalStorage } from '../enums/local-storage.enum';
+import { LocalStorageService } from '../services/local-storage.service';
 
 @Injectable()
 export class AuthorizeInterceptor implements HttpInterceptor {
   constructor(
     private readonly authorizeService: AuthorizeService,
-    private readonly router: Router,
   ) {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const newRequest = this.authorizeService.isSigned
-      ? req.clone({ setHeaders: { token: this.authorizeService.token }})
+    const newRequest = this.authorizeService.token
+      ? req.clone({ setHeaders: { authorization: this.authorizeService.token } })
       : req;
 
     return next.handle(newRequest).pipe(
-      tap(),
+      tap(this.checkSignResult),
     );
   }
 
-  checkSignResult(response: HttpResponse<any>) {
+  checkSignResult = (response: HttpResponse<any>) => {
     if (response.status === 401) {
       this.authorizeService.signOut();
-      this.router.navigate([EAppState.SIGN]);
     }
-  }
-
+  };
 }

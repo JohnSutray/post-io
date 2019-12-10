@@ -2,6 +2,11 @@ import { Component } from '@angular/core';
 import { LabelConstants } from '../../constants/label.constants';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthorizeService } from '../../services/authorize.service';
+import { UserClientService } from '../../services/clients/user-client.service';
+import { InfoDialogService } from '../../services/info-dialog.service';
+import { catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { InfoDialogData } from '../../models/info-dialog-data.model';
 
 @Component({
   selector: 'app-sign',
@@ -57,8 +62,9 @@ export class SignComponent {
 
   constructor(
     private readonly authorizeService: AuthorizeService,
+    private readonly userClient: UserClientService,
+    private readonly infoDialogService: InfoDialogService,
   ) {
-    this.signUpFormGroup.valueChanges.subscribe(console.log);
   }
 
   get inSignInMode(): boolean {
@@ -78,6 +84,27 @@ export class SignComponent {
   sign() {
     this.inSignInMode
       ? this.authorizeService.signIn(this.signInFormGroup.value)
-      : this.authorizeService.signUp(this.signUpFormGroup.value);
+      : this.signUp();
+  }
+
+  signUp() {
+    this.userClient.createUser(this.signUpFormGroup.value)
+      .pipe(catchError(() => of(null)))
+      .subscribe(user => {
+        if (user) {
+          this.openSuccessSignUp();
+          this._inSignInMode = true;
+        }
+      });
+  }
+
+  openSuccessSignUp() {
+    this.infoDialogService.open(new InfoDialogData(
+      LabelConstants.SUCCESS,
+      [
+        LabelConstants.USER_CREATED_SUCCESSFULLY,
+        LabelConstants.PLEASE_SIGN_IN_NOW,
+      ],
+    ));
   }
 }

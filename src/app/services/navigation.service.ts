@@ -23,7 +23,8 @@ export class NavigationService {
   }
 
   navigateTo(feature: EAppState): void {
-    this.router.navigate([feature]);
+    console.log(this.router.url);
+    this.router.navigateByUrl(feature);
     this._appFeature = feature;
   }
 

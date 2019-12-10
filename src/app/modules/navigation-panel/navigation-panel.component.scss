@@ -2,7 +2,7 @@
   width: 100%;
   height: 10%;
 
-  &__element {
+  &__navigation-element {
     background-color: #e2e2e2;
     font-size: 30px;
     text-transform: uppercase;
@@ -19,6 +19,10 @@
     &_disabled {
       color: rgb(173, 173, 173);
     }
+  }
+
+  &__exit-element {
+    margin-right: 50px;
   }
 }
 

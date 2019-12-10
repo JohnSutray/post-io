@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { InfoDialogService } from '../services/info-dialog.service';
 import { InfoDialogData } from '../models/info-dialog-data.model';
+import { LabelConstants } from '../constants/label.constants';
 
 @Injectable()
 export class ErrorHandleInterceptor implements HttpInterceptor {
@@ -16,7 +17,7 @@ export class ErrorHandleInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(
       catchError(errorResponse => {
-        const header = 'Что-то пошло не так...';
+        const header = LabelConstants.SOMETHING_WENT_WRONG;
         const defaultMessage = errorResponse.message;
         const customMessages = this.getCustomErrorMessages(errorResponse);
         const messages = customMessages.length

@@ -1,21 +1,19 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivateChild, Router, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 import { AuthorizeService } from '../services/authorize.service';
-import { EAppState } from '../enums/navigation.enum';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthorizeGuard implements CanActivateChild {
+export class AuthorizeGuard implements CanActivate {
   constructor(
     private readonly authorizeService: AuthorizeService,
-    private readonly router: Router,
   ) {
   }
 
-  canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+  canActivate(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     if (!this.authorizeService.isSigned) {
-      this.router.navigate([EAppState.SIGN]);
+      this.authorizeService.restoreUser();
     }
 
     return this.authorizeService.isSigned;

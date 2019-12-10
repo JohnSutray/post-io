@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NavigationPanelComponent } from './navigation-panel.component';
 import { MatRippleModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -14,6 +15,7 @@ import { MatButtonModule } from '@angular/material/button';
     CommonModule,
     MatRippleModule,
     MatButtonModule,
+    MatIconModule,
   ],
   exports: [
     NavigationPanelComponent,
